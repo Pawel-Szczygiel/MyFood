@@ -1,0 +1,51 @@
+﻿@model ApplicationUser
+
+@{
+    ViewData["Title"] = "DeleteGet";
+}
+
+   <section class="manage-account-delete" >
+      
+        <div class="container__categories">
+
+           
+                <div class="container__categories__heading">
+                     <h1><i class="fas fa-id-card"></i> Manage account</h1>
+                </div>
+
+                <div class="container__categories__list">
+                     
+                    <div class="container__categories__title__details">
+                         <form method="post" asp-action="Delete" id="delete">
+                             <input asp-for="Id" hidden />
+                             
+                             <h4>User name:</h4>
+                             <h1 class="userAccount">@Model.Name</h1>
+                             <h4>User email:</h4>
+                             <p>@Model.Email</p>
+                             <h4>User Id</h4>
+                             <p>@Model.Id</p>
+                             <h4>Hashing User Password :</h4>
+                             <p>@Model.PasswordHash</p>
+                                                    
+                                                     
+                             
+
+                         </form>
+                    </div>  
+                      
+                </div>
+            
+            <div class="container__categories__buttons">
+                <p class="remove">Do you want to delete your account <i class="fas fa-question"></i></p>
+                <div class="btn delete">
+                    <a href="javascript:document.getElementById('delete').submit()" >Yes&nbsp<i class="fas fa-check"></i></a>
+                </div>
+                <div class="btn back">
+                    <a asp-controller="ManageAccount" asp-action="Details" asp-route-id="@Model.Id" >Back&nbsp<i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+
+        </div>
+        
+    </section>

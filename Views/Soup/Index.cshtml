@@ -1,0 +1,96 @@
+﻿@using MyFood.Models.ViewModels
+@model IEnumerable<MyFood.Models.ViewModels.Soup>
+
+@{
+    ViewData["Title"] = "Index";
+    
+}
+
+<a onclick="scrollToTop();" class="scrollTop" ><i class="fas fa-angle-double-up"></i></a>
+<section class="soups">
+
+    <div class="container__categories">
+
+
+        <div class="container__categories__heading">
+            <h1>List of Soups</h1>
+            <a asp-controller="Soup" asp-action="Create"  class="enter-list" >
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Create
+                <i class="fas fa-folder-plus"></i>
+            </a>
+                
+        </div>
+
+        <div class="container__categories__list">
+
+            @{
+                var id = "";
+
+                @foreach (var s in Model)
+                {
+                    if (s.UserId == @ViewBag.userId) id = @ViewBag.userId;
+                }
+            
+
+                @if (Model.Any() && id != "")
+                {
+
+                    @foreach (var soup in Model)
+                    {
+                        @if (soup.UserId == id)
+                        {
+                            <div class="container__categories__title">
+
+                                <div class="info">
+                                    <h4>@soup.SoupName</h4>
+                                    @for (var i = 0; i < @soup.EvaluationRating; i++)
+                                    {
+                                        <label></label>
+                                    }
+                                </div>
+                                <a class="enter-list" asp-controller="Soup" asp-action="Details" asp-route-Id="@soup.Id">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    Show
+                                        <i class="far fa-eye"></i>
+                                </a>
+
+                            </div>
+                        }
+                    }
+                }
+                else
+                {
+                    <p class="else">No soups created yet</p>
+                }
+
+            }   
+                
+        </div>
+
+
+        <div class="container__categories__buttons">
+
+            <div class="btn back">
+                <a asp-controller="Home" asp-action="Categories">Back&nbsp<i class="fas fa-arrow-left"></i></a>
+            </div>
+
+        </div>
+            
+    </div>
+    
+      @if (TempData["success"] != null)
+      {
+          <div id="toastr" class="showToaster" ><i class="fas fa-check"></i> @TempData["success"]</div>
+      }
+        
+</section>
+
+
+

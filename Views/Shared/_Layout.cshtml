@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - MyFood</title>
+        <script src="https://kit.fontawesome.com/d3ef1541ef.js" crossorigin="anonymous"></script>
+        
+        <link rel="stylesheet" href="~/css/site.css" />
+    </head>
+    <body>
+        <header>
+
+             <nav>
+                <div class="logo">
+                    <a asp-controller="Home" asp-action="Index">
+                        <i class="fas fa-utensils"></i><span class="logoColor">Your Food</span><span class="redDot">.</span>
+                    </a>
+                </div>
+                <ul class="main-nav">
+                    <li>
+                        <a asp-controller="Home" asp-action="Index" ><i class="fas fa-home"></i>Home</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Home" asp-action="Categories" ><i class="far fa-folder-open"></i>Categories</a>
+                    </li>
+                    <li>
+                        <a asp-controller="ManageAccount"  asp-action="Details" ><i class="fas fa-user"></i>Manage</a>
+                    </li>
+                    <li>
+                        <partial name="_LoginPartial" />
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="navbar">
+                <ul class="nav-list">
+
+                    <li class="nav-item">
+                        <a asp-controller="Home" asp-action="Index" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a  asp-controller="Home" asp-action="Categories" class="nav-link">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="ManageAccount" asp-action="Details" class="nav-link" >Manage</a>
+                    </li>
+                    <li class="nav-item">
+                        <partial name="_LoginPartialNavBar" />
+                    </li>
+            
+                </ul>   
+            </div>
+            <div class="hamburger-menu">
+                <div class="line line-1"></div>
+                <div class="line line-2"></div>
+                <div class="line line-3"></div>
+            </div>
+        
+        </header>
+
+        
+         <main role="main">
+                @RenderBody()
+          </main>
+        
+
+         <script src="~/lib/jquery/dist/jquery.min.js"></script>
+         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+    </body>
+</html>

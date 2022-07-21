@@ -1,0 +1,96 @@
+﻿@using MyFood.Models.ViewModels
+@model IEnumerable<MyFood.Models.ViewModels.Salads>
+
+@{
+    ViewData["Title"] = "Index";
+    
+}
+
+<a onclick="scrollToTop();" class="scrollTop" ><i class="fas fa-angle-double-up"></i></a>
+<section class="salads">
+
+        <div class="container__categories">
+
+
+            <div class="container__categories__heading">
+                <h1>List of Salads <i class="fas fa-seedling"></i></h1>
+                <a asp-controller="Salads" asp-action="Create"  class="enter-list" >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Create
+                    <i class="fas fa-folder-plus"></i>
+                </a>
+                
+            </div>
+
+            <div class="container__categories__list">
+
+                @{
+                    var Id = "";
+
+                    @foreach (var a in Model)
+                    {
+                        if (a.UserId == @ViewBag.userId) Id = @ViewBag.userId;
+                    }
+
+
+                    @if (Model.Any() && Id != "")
+                    {
+
+                        foreach (var salad in Model)
+                        {
+                            if (salad.UserId == @ViewBag.userId)
+                            {
+                                <div class="container__categories__title">
+
+                                    <div class="info">
+                                        <h4>@salad.SaladsName</h4>
+                                        @for (var i = 0; i < @salad.EvaluationRating; i++)
+                                        {
+                                            <label></label>
+                                        }
+                                    </div>
+                                    <a class="enter-list" asp-controller="Salads" asp-action="Details" asp-route-Id="@salad.Id">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        Show
+                                        <i class="far fa-eye"></i>
+                                    </a>
+
+                                </div>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        <p class="else">No salads created yet</p>
+                    }
+
+                }
+                
+            </div>
+
+
+            <div class="container__categories__buttons">
+
+                <div class="btn back">
+                    <a asp-controller="Home" asp-action="Categories">Back&nbsp<i class="fas fa-arrow-left"></i></a>
+                </div>
+
+            </div>
+            
+        </div>
+        
+          @if (TempData["success"] != null)
+          {
+              <div id="toastr" class="showToaster" ><i class="fas fa-check"></i> @TempData["success"]</div>
+          }
+    
+</section>
+
+
+

@@ -1,0 +1,54 @@
+﻿@model MyFood.Models.ViewModels.Soup
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+   <section class="soups" >
+        <div class="container__categories">
+
+           
+                <div class="container__categories__heading">
+                    <h1>Soup</h1>
+                </div>
+
+                <div class="container__categories__list">
+                     
+                    <div class="container__categories__title__details">
+                        
+                       <h1>@Model.SoupName</h1>
+                       <h4>Ingredients:</h4>
+                       <p>@Model.Ingredients</p>
+                       <h4>Method of execution:</h4>
+                       <p class="execiution" >@Model.MethodOfExecution</p>
+                       <div class="details">
+                           <div>
+                                  @for (var i = 0; i < @Model.EvaluationRating; i++)
+                                  {
+                                      <label></label>   
+                                  }
+                            </div>
+                            <h3>@Model.TimeToPrepare min.</h3>
+                            <h3>@Model.ExecutionLevel</h3>
+                       </div>
+
+                    </div>  
+                      
+                </div>
+            
+            <div class="container__categories__buttons">
+             
+                <div class="btn edit">
+                    <a asp-controller="Soup" asp-action="Update" asp-route-id="@Model.Id" >Edit&nbsp<i class="far fa-edit"></i></a>
+                </div>
+                <div class="btn delete">
+                    <a asp-controller="Soup" asp-action="DeleteGet" asp-route-id="@Model.Id" >Delete&nbsp<i class="far fa-trash-alt"></i></a>
+                </div>
+                <div class="btn back">
+                    <a asp-controller="Soup" asp-action="Index" >Back&nbsp<i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+

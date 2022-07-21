@@ -1,0 +1,131 @@
+﻿@model MyFood.Models.ViewModels.Dessert
+
+
+<section class="dessert">
+      <div class="container__categories">
+        <form id="add" method="post" asp-action="Create">
+          <div class="container__categories__heading">
+            <h1>Create recipe of Dessert</h1>
+            
+          </div>
+
+          <div asp-validation-summary="ModelOnly"></div>
+
+          <div class="container__categories__list">
+            <div class="container__categories__title">
+
+              <div class="formBox">
+                <div class="form">
+                  <div class="inputBox">
+                  
+                    <input
+                      asp-for="DessertName"
+                      class="title"
+                      type="text"
+                      required="required"
+                      maxlength="60"
+                    />
+                    <label asp-for="DessertName" class="text" ></label>
+                    <span class="line"></span>
+                    <span asp-validation-for="DessertName" class="textDanger"></span>
+                  </div>
+
+                  <div class="radioBox">
+                    <label asp-for="EvaluationRating" ></label>
+                    <div class="rating">
+                      <input asp-for="EvaluationRating" type="radio"  id="star1" value="5" />
+                      <label for="star1"></label>
+
+                      <input asp-for="EvaluationRating" type="radio"  id="star2" value="4" />
+                      <label for="star2"></label>
+
+                      <input asp-for="EvaluationRating" type="radio"  id="star3" value="3" />
+                      <label for="star3"></label>
+
+                      <input asp-for="EvaluationRating" type="radio"  id="star4" value="2" />
+                      <label for="star4"></label>
+
+                      <input asp-for="EvaluationRating" type="radio"  id="star5" value="1" />
+                      <label for="star5"></label>
+                    </div>
+                  </div>
+
+                  <div class="selectBox">
+                    <label asp-for="ExecutionLevel"></label>
+
+                    <select asp-for="ExecutionLevel">
+                      <option value="very easy">very easy</option>
+                      <option value="easy">easy</option>
+                      <option value="average">average</option>
+                      <option value="hard">hard</option>
+                      <option value="very hard">very hard</option>
+                    </select>
+                  </div>
+
+                  <div class="rangeBox">
+                      <div class="label">
+                        <label asp-for="TimeToPrepare"></label>
+                        <span class="rangeValue">0</span>
+                        
+                    </div>
+                    <input
+                      asp-for="TimeToPrepare"
+                      class="range"
+                      type="range"
+                      value="0"
+                      min="0"
+                      max="500"
+                      step="5"
+                      onchange="rangeSlide(this.value)"
+                      onmousemove="rangeSlide(this.value)"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="formBox">
+                <div class="form">
+
+                    <div class="input_Box textarea">
+                        <textarea asp-for="Ingredients" required="required"></textarea>
+                        <label asp-for="Ingredients" class="text"></label>
+                        <span class="line"></span>
+                        <span asp-validation-for="Ingredients" class="textDanger"></span>
+                    </div>
+                 
+                </div>
+              </div>
+
+
+              <div class="formBox">
+                <div class="form">
+
+                    <div class="input_Box textarea">
+                        <textarea asp-for="MethodOfExecution" required="required"></textarea>
+                        <label asp-for="MethodOfExecution" class="text"></label>
+                        <span class="line"></span>
+                    </div>
+                 
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+          <div class="container__categories__buttons">
+            <div class="btn edit">
+              <a class="addBtn" href="javascript:document.getElementById('add').submit()" >Add&nbsp<i class="fas fa-plus"></i></a>
+            </div>
+            <div class="btn back">
+              <a asp-controller="Dessert" asp-action="Index">Back&nbsp<i class="fas fa-arrow-left"></i></a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    @section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,12 @@
+﻿@inject Microsoft.AspNetCore.Identity.SignInManager<ApplicationUser>  _signInManager
+
+    @if (_signInManager.IsSignedIn(User))
+    {   
+        <form method="post" id="logoutForm" asp-controller="Account" asp-action="Logoff" >
+            <a href="javascript:document.getElementById('logoutForm').submit()" ><i class="fas fa-sign-out-alt"></i>Log off</a>
+        </form>
+    } else
+    {
+        <a asp-controller="Account" asp-action="Login" ><i class="fas fa-sign-in-alt"></i>Log in</a> 
+    }
+

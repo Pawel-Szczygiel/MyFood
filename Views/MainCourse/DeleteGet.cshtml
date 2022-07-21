@@ -1,0 +1,53 @@
+﻿@model MyFood.Models.ViewModels.MainCourse
+
+@{
+    ViewData["Title"] = "DeleteGet";
+}
+
+   <section class="main-course" >
+      
+        <div class="container__categories">
+
+           
+                <div class="container__categories__heading">
+                    <h1>Main Course</h1>
+                </div>
+
+                <div class="container__categories__list">
+                     
+                    <div class="container__categories__title__details">
+                         <form method="post" asp-action="Delete" id="delete">
+                                <input asp-for="Id" hidden />
+                               <h1>@Model.MainCourseName</h1>
+                               <h4>Składniki:</h4>
+                               <p>@Model.Ingredients</p>
+                               <h4>Sposób wykonania:</h4>
+                               <p class="execiution" >@Model.MethodOfExecution</p>
+                               <div class="details">
+                                   <div>
+                                          @for (var i = 0; i < @Model.EvaluationRating; i++)
+                                          {
+                                              <label></label>   
+                                          }
+                                    </div>
+                                    <h3>@Model.TimeToPrepare min.</h3>
+                                    <h3>@Model.ExecutionLevel</h3>
+                               </div>
+                       </form>
+                    </div>  
+                      
+                </div>
+            
+            <div class="container__categories__buttons">
+                <p class="remove">Do you want to delete <i class="fas fa-question"></i></p>
+                <div class="btn delete">
+                    <a href="javascript:document.getElementById('delete').submit()" >Yes&nbsp<i class="fas fa-check"></i></a>
+                </div>
+                <div class="btn back">
+                    <a asp-controller="MainCourse" asp-action="Details" asp-route-id="@Model.Id" >Back&nbsp<i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+
+        </div>
+        
+    </section>

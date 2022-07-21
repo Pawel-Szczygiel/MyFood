@@ -1,0 +1,99 @@
+﻿@using MyFood.Helper
+@model MyFood.Models.ViewModels.RegisterLoginVm
+
+<section class="login">
+    <div class="wraper">
+                                                     @* --- Login --- *@
+        <div class="user signinBox">
+            <div class="imgBox" id="first">
+                <img src="../img/signout.jpg" alt="cake">
+                </div>
+            <div class="formBox">
+                <form id="account" method="post" asp-action="Login" asp-controller="Account">
+                    
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    
+                    <h2>Hi, kindly sign in.</h2>
+                    <div class="inputBox">
+                        <input type="text" required="required" asp-for="LoginViewModel.Email">
+                        <label class="text" asp-for="LoginViewModel.Email"></label>
+                        <span class="line"></span>
+                        <span asp-validation-for="LoginViewModel.Email" class="textDanger"></span>
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" required="required" asp-for="LoginViewModel.Password">
+                        <label class="text" asp-for="LoginViewModel.Password"></label>
+                        <span class="line"></span>
+                        <span asp-validation-for="LoginViewModel.Password" class="textDanger"></span>
+                    </div>
+
+                    <button type="submit">Sign In</button>
+
+                    <p class="signup">Don't have an account ?
+                        <a href="#">Create</a>
+                    </p>
+
+                </form>
+            </div>
+        </div>
+
+        <div class="user signupBox">
+                                                            @* --- Register --- *@
+            <div class="formBox">
+                <form method="post" asp-controller="Account" asp-action="Register">
+                
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    
+                    <h2>Create your account</h2>
+                    <div class="inputBox">
+                        <input type="text" required="required" asp-for="RegisterViewModel.Name">
+                        <label class="text" asp-for="RegisterViewModel.Name"></label>
+                        <span class="line"></span>
+                        <span asp-validation-for="RegisterViewModel.Name" class="textDanger"></span>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" required="required" asp-for="RegisterViewModel.Email"/>
+                        <label class="text" asp-for="RegisterViewModel.Email"></label>
+                        <span class="line"></span>
+                        <span asp-validation-for="RegisterViewModel.Email" class="textDanger"></span>
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" required="required" asp-for="RegisterViewModel.Password">
+                        <label class="text" asp-for="RegisterViewModel.Password"></label>
+                        <span class="line"></span>
+                        <span asp-validation-for="RegisterViewModel.Password" class="textDanger"></span>
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" required="required" asp-for="RegisterViewModel.ConfirmPassword">
+                        <label class="text" asp-for="RegisterViewModel.ConfirmPassword"></label>
+                        <span class="line"></span>
+                        <span asp-validation-for="RegisterViewModel.ConfirmPassword" class="textDanger"></span>
+                    </div>
+                    <input type="hidden"  asp-for="RegisterViewModel.RoleName" value="@Helper.User">
+                    
+                    <button type="submit">Create Account</button>
+
+                    <p class="signin">Already have an account ?
+                        <a href="#">Sign In.</a>
+                    </p>
+                    
+                </form>
+            </div>
+            <div class="imgBox">
+                <img src="../img/signin.jpg" alt="cake" >
+                </div>
+        </div>
+
+    </div>
+    
+       @if (TempData["success"] != null)
+        {
+            <div id="toastr" class="showToaster" ><i class="fas fa-check"></i> @TempData["success"]</div>
+        }
+    
+</section>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

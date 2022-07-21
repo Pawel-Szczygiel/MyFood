@@ -1,0 +1,91 @@
+﻿@model ApplicationUser
+
+
+
+<section class="manage-account-details">
+      <div class="container__categories">
+        <form id="edit" method="post" asp-action="Update">
+        @*<input asp-for="Id" hidden>*@
+        
+          <div class="container__categories__heading">
+            <h1><i class="fas fa-list-ol"></i> Edit your account</h1>
+            
+          </div>
+
+          <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+          <div class="container__categories__list">
+            <div class="container__categories__title">
+
+              <div class="formBox">
+
+                <div class="form">
+                  <div class="inputBox">
+                  
+                    <input
+                      asp-for="Name"
+                      class="title"
+                      type="text"
+                      required="required"
+                      maxlength="60"
+                     
+                    />
+                    <label asp-for="Name" class="text" ></label>
+                    <span class="line"></span>
+                    <span asp-validation-for="Name" class="textDanger"></span>
+                  </div>
+                  <div class="inputBox">
+                    
+                    <input
+                      asp-for="Email"
+                      class="title"
+                      type="text"
+                      required="required"
+                      maxlength="60"/>
+                    <label asp-for="Email" class="text"></label>
+                    <span class="line"></span>
+                    <span asp-validation-for="Email" class="textDanger"></span>
+                  </div>
+                  <div class="inputBox">
+                    
+                    <input
+                      asp-for="Password"
+                      class="title"
+                      type="text"
+                      required="required"
+                      maxlength="60"/>
+                    <label asp-for="Password" class="text"></label>
+                    <span class="line"></span>
+                    <span asp-validation-for="Password" class="textDanger"></span>
+                  </div>
+                
+              </div>
+
+            </div>
+
+             
+              <div class="formBox">
+                  <div class="form accounManage">
+                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem, nam. Maiores ex fugit tempora, consequatur, nemo quo provident architecto dolor laboriosam debitis numquam quas quos quibusdam nam distinctio asperiores aspernatur!</p>
+                  </div>
+              </div>
+
+
+          </div>
+
+          <div class="container__categories__buttons">
+            <div class="btn edit">
+              <a class="addBtn" href="javascript:document.getElementById('edit').submit()" >Update&nbsp<i class="fas fa-pen"></i></a>
+            </div>
+            <div class="btn back">
+              <a asp-controller="ManageAccount" asp-action="Details" asp-route-id="@Model.Id">Back&nbsp<i class="fas fa-arrow-left"></i></a>
+            </div>
+          </div></div>
+        </form>
+      </div>
+    </section>
+
+    @section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,12 @@
+﻿@inject Microsoft.AspNetCore.Identity.SignInManager<MyFood.Models.ApplicationUser>  _signInManager
+
+    @if (_signInManager.IsSignedIn(User))
+    {   
+        <form method="post" id="logoutForm" asp-controller="Account" asp-action="Logoff" >
+            <a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link" >Log off</a>
+        </form>
+    } else
+    {
+        <a asp-controller="Account" asp-action="Login" class="nav-link" >Log in</a> 
+    }
+

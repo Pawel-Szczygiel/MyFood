@@ -1,0 +1,57 @@
+﻿@model ApplicationUser
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+   <section class="manage-account" >
+       <div class="container__categories">
+
+           
+           <div class="container__categories__heading">
+               <h1><i class="fas fa-id-card"></i> Manage account</h1>
+           </div>
+
+           <div class="container__categories__list">
+                     
+               <div class="container__categories__title__details">
+                        
+                   <h4>User name:</h4>
+                   <h1 class="userAccount">@Model.Name</h1>
+                   <h4>User email:</h4>
+                   <p>@Model.Email</p>
+                   <h4>User Id</h4>
+                   <p>@Model.Id</p>
+                   <h4>Hashing User Password :</h4>
+                   <p>@Model.PasswordHash</p>
+                       
+                        
+
+               </div>  
+                      
+           </div>
+            
+           <div class="container__categories__buttons">
+             
+               <div class="btn edit">
+                   <a asp-controller="ManageAccount" asp-action="Update" asp-route-id="@Model.Id" >Edit&nbsp<i class="far fa-edit"></i></a>
+               </div>
+               <div class="btn delete">
+                   <a asp-controller="ManageAccount" asp-action="DeleteGet" asp-route-id="@Model.Id" >Delete&nbsp<i class="far fa-trash-alt"></i></a>
+               </div>
+               <div class="btn back">
+                   <a asp-controller="Home" asp-action="Index" >Back&nbsp<i class="fas fa-arrow-left"></i></a>
+               </div>
+           </div>
+
+       </div>
+       
+         @if (TempData["success"] != null)
+         {
+             <div id="toastr" class="showToaster" ><i class="fas fa-check"></i> @TempData["success"]</div>
+         }
+       
+   </section>
+
+
+
