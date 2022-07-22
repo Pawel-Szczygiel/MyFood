@@ -1,5 +1,4 @@
 # MyFood!
+Aplikacja jako temat pracy inżynierskiej
 
-Aplikacja jako temat pracy inżynierskiej.
-
-[Zrzut ekranu (4)](https://user-images.githubusercontent.com/74866405/180516587-5d7973b4-4c18-4e3c-8d59-541cc5d32a43.png)
+![Zrzut ekranu (4)](https://user-images.githubusercontent.com/74866405/180517150-609984f6-8818-4d5d-94ff-b4cca6c26d6b.png)
